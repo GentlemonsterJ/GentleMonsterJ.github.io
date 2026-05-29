@@ -54,8 +54,7 @@ a {
 
 .hero-copy,
 .avatar-card,
-.section,
-.project-item {
+.section {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 28px;
@@ -81,11 +80,6 @@ a {
   font-size: clamp(36px, 5vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.04em;
-}
-
-.divider {
-  color: rgba(20, 33, 29, 0.4);
-  margin: 0 10px;
 }
 
 .intro {
@@ -116,8 +110,7 @@ a {
   margin: 22px 0 0;
 }
 
-.button-link,
-.paper-link {
+.button-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -131,8 +124,7 @@ a {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.button-link:hover,
-.paper-link:hover {
+.button-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(8, 63, 55, 0.2);
 }
@@ -151,21 +143,17 @@ a {
   color: #fff;
 }
 
-.avatar-initials {
-  display: grid;
-  place-items: center;
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 38px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+.avatar-photo {
+  width: min(100%, 270px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
 }
 
 .avatar-name {
-  margin: 20px 0 6px;
+  margin: 18px 0 6px;
   font-size: 22px;
   font-weight: 700;
 }
@@ -195,10 +183,30 @@ a {
 
 .section p,
 .detail-list li,
-.project-info p {
+.timeline-content p {
   color: var(--muted);
   font-size: 16px;
   line-height: 1.75;
+}
+
+.interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 0 18px;
+}
+
+.interest-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(12, 91, 79, 0.08);
+  border: 1px solid rgba(12, 91, 79, 0.14);
+  color: var(--accent-deep);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .detail-list {
@@ -206,62 +214,52 @@ a {
   padding-left: 20px;
 }
 
-.project-grid {
+.detail-list a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.detail-list a:hover {
+  text-decoration: underline;
+}
+
+.timeline {
   display: grid;
+  gap: 16px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
   gap: 18px;
-}
-
-.project-item {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 22px;
+  align-items: center;
   padding: 22px;
-  background: var(--surface-strong);
-}
-
-.project-image {
+  border: 1px solid var(--border);
   border-radius: 22px;
-  overflow: hidden;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
 }
 
-.placeholder-image {
-  min-height: 180px;
-  display: grid;
-  place-items: center;
-  background:
-    linear-gradient(135deg, rgba(12, 91, 79, 0.98), rgba(36, 122, 107, 0.92)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
-  color: #fff;
-  font-size: 24px;
+.timeline-period {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
-.placeholder-image.alt {
-  background:
-    linear-gradient(135deg, rgba(192, 123, 75, 0.96), rgba(144, 87, 49, 0.96)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
-}
-
-.project-info h3 {
-  margin: 0 0 10px;
+.timeline-content h3 {
+  margin: 0 0 8px;
   color: var(--text);
   font-size: 24px;
 }
 
-.highlight {
-  color: var(--accent-deep);
-  font-weight: 700;
-}
-
-.status {
-  margin-left: 10px;
-  color: var(--warm);
-  font-weight: 700;
-}
-
-.links {
-  margin-top: 16px;
+.timeline-content p {
+  margin: 4px 0;
 }
 
 @media (max-width: 820px) {
@@ -271,7 +269,7 @@ a {
   }
 
   .hero,
-  .project-item {
+  .timeline-item {
     grid-template-columns: 1fr;
   }
 
@@ -285,12 +283,7 @@ a {
     font-size: clamp(30px, 10vw, 46px);
   }
 
-  .divider {
-    display: block;
-    margin: 6px 0;
-  }
-
-  .project-image {
-    min-height: 160px;
+  .timeline-period {
+    letter-spacing: 0.04em;
   }
 }
